@@ -56,5 +56,8 @@ if ($MyInvocation.InvocationName -ne '.') {
             $result = Get-Fibonacci -N $N
             Write-Output "Fibonacci($N) = $result"
         }
+        default {
+            throw "Unsupported Operation '$Operation'."
+        }
     }
 }
