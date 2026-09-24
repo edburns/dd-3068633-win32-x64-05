@@ -1,5 +1,6 @@
 [CmdletBinding()]
 param(
+    [Parameter(Mandatory)]
     [ValidateRange(0, [int]::MaxValue)]
     [int]$N
 )
@@ -7,6 +8,7 @@ param(
 function Get-Fibonacci {
     [OutputType([bigint])]
     param(
+        [Parameter(Mandatory)]
         [ValidateRange(0, [int]::MaxValue)]
         [int]$N
     )

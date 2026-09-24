@@ -8,6 +8,7 @@ Describe 'Get-Fibonacci' {
         @{ N = 0; Expected = 0 }
         @{ N = 1; Expected = 1 }
         @{ N = 5; Expected = 5 }
+        @{ N = 10; Expected = 55 }
     ) {
         param($N, $Expected)
 
