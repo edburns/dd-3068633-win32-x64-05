@@ -31,9 +31,12 @@ Describe 'math-tool CLI' {
     ) {
         param($N, $Expected)
 
-        $output = @(& pwsh -NoLogo -NoProfile -File $scriptPath -N $N 2>&1)
+        $stderrPath = Join-Path $TestDrive "stderr-$N.txt"
+        $output = @(& pwsh -NoLogo -NoProfile -File $scriptPath -N $N 2> $stderrPath)
+        $stderr = Get-Content -LiteralPath $stderrPath -Raw
 
         $LASTEXITCODE | Should -Be 0
+        $stderr | Should -BeNullOrEmpty
         $output | Should -HaveCount 1
         $output[0].ToString() | Should -Be $Expected
     }
