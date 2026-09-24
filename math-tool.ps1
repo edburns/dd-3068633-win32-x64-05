@@ -5,17 +5,17 @@ param(
 )
 
 function Get-Fibonacci {
-    [OutputType([long])]
+    [OutputType([bigint])]
     param(
         [ValidateRange(0, [int]::MaxValue)]
         [int]$N
     )
 
-    [long]$current = 0
-    [long]$next = 1
+    [bigint]$current = 0
+    [bigint]$next = 1
 
     for ($index = 0; $index -lt $N; $index++) {
-        [long]$following = $current + $next
+        [bigint]$following = $current + $next
         $current = $next
         $next = $following
     }

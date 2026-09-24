@@ -1,7 +1,9 @@
-$scriptPath = Join-Path $PSScriptRoot 'math-tool.ps1'
-. $scriptPath -N 0
-
 Describe 'Get-Fibonacci' {
+    BeforeAll {
+        $scriptPath = Join-Path $PSScriptRoot 'math-tool.ps1'
+        . $scriptPath -N 0
+    }
+
     It 'returns only <Expected> for N=<N>' -TestCases @(
         @{ N = 0; Expected = 0 }
         @{ N = 1; Expected = 1 }
@@ -17,6 +19,10 @@ Describe 'Get-Fibonacci' {
 }
 
 Describe 'math-tool CLI' {
+    BeforeAll {
+        $scriptPath = Join-Path $PSScriptRoot 'math-tool.ps1'
+    }
+
     It 'writes the expected result for N=<N>' -TestCases @(
         @{ N = 0; Expected = 'Fibonacci(0) = 0' }
         @{ N = 1; Expected = 'Fibonacci(1) = 1' }
